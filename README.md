@@ -942,3 +942,15 @@ MIT License — Free to use, modify, and distribute.
 
 *Built with ❤️ by [ARRAYYAN Jr](https://github.com/Fatkhl)*
 *Powered by [Hermes Agent](https://github.com/NousResearch/hermes-agent) — Nous Research*
+
+
+---
+
+## 🦞 Also Check Out: OpenClaw Setup Guide
+
+OpenClaw is the #1 open-source personal AI assistant (373K+ stars). If you want more channels (WhatsApp, Signal, iMessage, etc.) and a larger community:
+
+📖 **[OpenClaw Setup Guide](OPENCLAW-SETUP.md)** — Complete step-by-step installation and configuration
+
+Both are excellent. You can run both!
+

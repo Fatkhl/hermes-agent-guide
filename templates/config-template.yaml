@@ -1,0 +1,122 @@
+# ═══════════════════════════════════════════════════════════
+# Hermes Agent — Recommended Configuration Template
+# Copy to ~/.hermes/config.yaml and customize
+# ═══════════════════════════════════════════════════════════
+
+# ── Model Configuration ──────────────────────────────────
+model:
+  # Choose ONE provider setup:
+  
+  # Option A: OpenRouter (recommended)
+  # provider: openrouter
+  # default: anthropic/claude-sonnet-4
+  
+  # Option B: Direct Anthropic
+  # provider: anthropic
+  # default: claude-sonnet-4-20250514
+  
+  # Option C: Google Gemini (free)
+  # provider: google
+  # default: gemini-2.5-flash
+  
+  # Option D: DeepSeek (cheap)
+  # provider: deepseek
+  # default: deepseek-chat
+  
+  # Option E: Custom provider
+  # provider: custom
+  # base_url: https://your-provider/v1
+  # api_key: your-api-key
+  # default: model-name
+
+# ── Agent Settings ───────────────────────────────────────
+agent:
+  max_turns: 90                    # Max conversation turns
+  tool_use_enforcement: auto       # auto, required, none
+  max_iterations: 25               # Max tool call iterations
+
+# ── System Prompt (SOUL) ────────────────────────────────
+system_prompt_file: ~/.hermes/SOUL.md
+
+# ── Terminal ─────────────────────────────────────────────
+terminal:
+  backend: local                   # local, docker, ssh, modal
+  timeout: 180                     # Command timeout (seconds)
+  persistent_shell: true           # Keep shell session alive
+
+# ── Display ──────────────────────────────────────────────
+display:
+  personality: default             # default, kawaii, pirate, custom
+  skin: default                    # CLI theme
+  show_reasoning: false            # Show LLM thinking
+  compact: false                   # Compact output
+
+# ── Memory ───────────────────────────────────────────────
+memory:
+  memory_enabled: true             # Cross-session memory
+  user_profile_enabled: true       # Remember user info
+  memory_char_limit: 2200          # Memory size limit
+  user_char_limit: 1375            # User profile limit
+
+# ── Compression ──────────────────────────────────────────
+compression:
+  enabled: true                    # Auto-compress long convos
+  threshold: 0.5                   # Trigger at 50% context
+  target_ratio: 0.2                # Compress to 20%
+  protect_last_n: 20               # Keep last 20 messages
+
+# ── Security ─────────────────────────────────────────────
+security:
+  redact_secrets: false            # Auto-mask API keys in output
+  tirith_enabled: true             # Command safety scanning
+
+# ── Approvals ────────────────────────────────────────────
+approvals:
+  mode: smart                      # manual, smart, off
+  timeout: 60                      # Approval timeout (seconds)
+
+# ── Toolsets ─────────────────────────────────────────────
+toolsets:
+  - hermes-cli                     # CLI tools
+  # Add more as needed:
+  # - hermes-telegram
+  # - hermes-discord
+
+# ── Auxiliary Models ─────────────────────────────────────
+# For vision, compression, search — set if main model
+# doesn't support these features
+auxiliary:
+  vision:
+    provider: auto                 # auto, or specific provider
+    model: ""                      # e.g., mimo-v2-omni
+    base_url: ""                   # Provider URL
+    api_key: ""                    # Provider key
+  web_extract:
+    provider: auto
+  compression:
+    provider: auto
+
+# ── Gateway (Messaging) ─────────────────────────────────
+telegram:
+  reactions: false
+  channel_prompts: {}
+
+discord:
+  require_mention: true
+  reactions: true
+
+# ── Skills ───────────────────────────────────────────────
+skills:
+  external_dirs: []                # Additional skill directories
+  template_vars: true              # Allow template variables
+
+# ── Cron ─────────────────────────────────────────────────
+cron:
+  wrap_response: true              # Wrap cron output
+  max_parallel_jobs: null          # null = unlimited
+
+# ── Logging ──────────────────────────────────────────────
+logging:
+  level: WARNING                   # DEBUG, INFO, WARNING, ERROR
+  max_size_mb: 5
+  backup_count: 3
